@@ -1,0 +1,23 @@
+#
+# These things are run when an Openbox X Session is started.
+# You may place a similar script in $HOME/.config/openbox/autostart
+# to run user-specific things.
+#
+
+# Set the DESKTOP_ENV variable to "Openbox"
+DESKTOP_ENV="OPENBOX"
+
+## Restore Wallpaper
+exec nitrogen --restore &
+
+## Start Compositing Manager
+compton -b --config ~/.config/compton.conf &
+
+## Launch Polybar
+#~/.config/polybar/launch-openbox.sh &
+
+## Notification Daemon
+exec dunst &
+
+## Networking Tray
+(sleep 3s && nm-applet) &

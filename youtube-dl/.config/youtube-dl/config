@@ -1,0 +1,37 @@
+# Config file for youtube-dl
+
+# Use ffmpeg over avconv
+--prefer-ffmpeg
+
+### Always extract audio 
+#-x
+
+# Ignore Errors
+--ignore-errors
+
+# Filesystem
+#--write-annotations
+#--write-description
+#--write-info-json
+
+# Video format
+--format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio'
+--merge-output-format mp4
+
+# Subtitle
+#--all-subs
+#--write-auto-sub
+#--write-sub
+
+# Post-processing
+--add-metadata
+#--embed-subs
+
+# Thumbnail images
+#--write-all-thumbnails
+--embed-thumbnail
+
+### Save all videos under _ directory
+## In the 'youtube-dl' directory under '/jonfiles/Videos'
+-o /jonfiles/Videos/youtube-dl/%(title)s-%(id)s.%(ext)s
+
