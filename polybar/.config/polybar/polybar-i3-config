@@ -21,6 +21,8 @@ primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 border-color = #4D4D4D
+uw-gold = #B7A57A
+uw-metallic-gold = #85754D
 
 acolor = #FFFFFF
 curgent = #EF5350
@@ -45,11 +47,13 @@ offset-y = 0
 radius = 0.0
 fixed-center = true
 
+override-redirect = false
+
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 2
-; line-color = #f00
+line-size = 3
+line-color = #FF5555
 
 border-size = 3
 border-color = ${colors.background}
@@ -60,19 +64,23 @@ padding-right = 2
 module-margin-left = 2 
 module-margin-right = 2
 
-font-0 = Hack:size=12;3
-font-1 = Siji Regular:pixelsize=14;3"
-font-2 = "Iosevka:pixelsize=21;3"
-font-3 = "FontAwesome:pixelsize=20;3"
+font-0 = "Hack Nerd Font:style=Regular:pixelsize=12;3"
+font-1 = "Material Icons:style=Regular:pixelsize=12;2"
+font-2 = "Siji:style=Regular:pixelsize=12;2"
+
+;font-0 = Hack:size=12;3
+;font-1 = Siji Regular:pixelsize=14;3"
+;font-2 = "Iosevka:pixelsize=21;3"
+;font-3 = "FontAwesome:pixelsize=20;3"
 
 modules-left = i3 
 modules-center = xwindow
-modules-right = date volume 
+modules-right = xkeyboard date volume 
 
-tray-position = none 
+tray-position = none
 tray-padding = 0
 
-wm-restack = none
+;wm-restack = i3
 
 enable-ipc = true
 
@@ -84,6 +92,8 @@ offset-x = 0
 offset-y = 0
 radius = 0.0
 fixed-center = false
+
+override-redirect = false
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -100,13 +110,17 @@ padding-right = 2
 module-margin-left = 2
 module-margin-right = 2
 
-font-0 = Hack:size=12;3
-font-1 = "Siji Regular:pixelsize=14;3"
-font-2 = "Iosevka:pixelsize=21;3"
-font-3 = "FontAwesome:pixelsize=20;3"
+font-0 = "Hack Nerd Font:style=Regular:pixelsize=12;3"
+font-1 = "Material Icons:style=Regular:pixelsize=12;2"
+font-2 = "Siji:style=Regular:pixelsize=12;2"
+
+;font-0 = Hack:size=12;3
+;font-1 = "Siji Regular:pixelsize=14;3"
+;font-2 = "Iosevka:pixelsize=21;3"
+;font-3 = "FontAwesome:pixelsize=20;3"
 
 modules-left = i3 
-modules-center = 
+;modules-center = 
 modules-right = eth memory cpu
 
 tray-position = center
@@ -114,7 +128,7 @@ tray-padding = 1
 tray-background = ${colors.background-alt} 
 tray-scale = 1.0
 
-wm-restack = none 
+;wm-restack = i3
 
 enable-ipc = true
 
@@ -156,12 +170,13 @@ label = %title:0:30:...%
 type = internal/xkeyboard
 blacklist-0 = num lock
 
-format-prefix = " "
+;format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-prefix-underline = ${colors.secondary}
 
 label-layout = %layout%
-label-layout-underline = ${colors.secondary}
+;label-layout-underline = ${colors.secondary}
+label-layout-underline = ${colors.uw-metallic-gold}
 
 label-indicator-padding = 2
 label-indicator-margin = 1
@@ -190,28 +205,30 @@ pin-workspaces = true
 label-mode = %mode% 
 label-mode-padding = 2
 label-mode-foreground = #000
-label-mode-background = #3f3f3f 
+label-mode-background = #3f3f3f
 
 ; focused = Active workspace on focused monitor
 label-focused = %name%
-label-focused-foreground = #ffffff
-label-focused-background = #3f3f3f 
-label-focused-underline = #fba922 
+label-focused-foreground = ${colors.uw-gold}
+label-focused-background = #444444
+label-focused-underline = ${colors.uw-metallic-gold}
 label-focused-padding = 1 
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %name%
-label-unfocused-padding = 1 
+label-unfocused-padding = 1
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %name%
-label-visible-background = ${colors.shade1} 
-label-visible-underline = ${colors.shade2}
+label-visible-background = ${colors.background-alt}
+label-visible-underline = ${colors.foreground}
 label-visible-padding = 1 
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %name%
+label-urgent-foreground = ${colors.foreground}
 label-urgent-background = ${colors.shade5}
+label-urgent-underline = ${colors.shade7}
 label-urgent-padding = 1 
 
 ; separators in between workspaces
@@ -269,18 +286,20 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
+;format-prefix = " "
+format-prefix = "%{T2} %{T-}"
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
-label =  CPU: %percentage:2%%
+;format-underline = #f90000
+format-underline = ${colors.uw-metallic-gold}
+label = CPU: %percentage:2%%
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
+format-prefix = "%{T2} %{T-} "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
-label =  RAM: %gb_used%
+format-underline = ${colors.uw-metallic-gold}
+label = RAM: %gb_used%
 
 [module/wlan]
 type = internal/network
@@ -298,11 +317,11 @@ format-disconnected =
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
+;ramp-signal-0 = 
+;ramp-signal-1 = 
+;ramp-signal-2 = 
+;ramp-signal-3 = 
+;ramp-signal-4 = 
 ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
@@ -310,8 +329,8 @@ type = internal/network
 interface = enp3s0
 interval = 3.0
 
-format-connected-underline = #55aa55
-format-connected-prefix = " "
+format-connected-underline = ${colors.uw-metallic-gold}
+;format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = ETH:  %downspeed% |  %upspeed% | %local_ip%
 
@@ -333,7 +352,8 @@ time-alt = | %H:%M:%S
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+;format-underline = #0a6cf5
+format-underline = ${colors.uw-metallic-gold}
 
 label = %date% %time%
 
@@ -350,7 +370,7 @@ ramp-volume-0=.
 ramp-volume-1=.
 ramp-volume-2=.
 
-format-muted-prefix = "🔇"
+;format-muted-prefix = "🔇"
 format-muted-foreground = ${colors.foreground-alt}
 label-muted = sound muted
 
@@ -384,18 +404,18 @@ format-charging-underline = #ffb52a
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = " "
+;format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
+;ramp-capacity-0 = 
+;ramp-capacity-1 = 
+;ramp-capacity-2 = 
 ramp-capacity-foreground = ${colors.foreground-alt}
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
+;animation-charging-0 = 
+;animation-charging-1 = 
+;animation-charging-2 = 
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
 
@@ -413,9 +433,9 @@ label = %temperature%
 label-warn = %temperature%
 label-warn-foreground = ${colors.secondary}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
+;ramp-0 = 
+;ramp-1 = 
+;ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
 
 [module/powermenu]
@@ -446,11 +466,15 @@ menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
 
 [settings]
+throttle-output = 5 
+throttle-output-for = 10 
+throttle-input-for = 30
 screenchange-reload = true
-compositing-background = xor
-;compositing-background = screen
-compositing-foreground = source
-;compositing-border = over
+compositing-background = over
+compositing-foreground = over
+compositing-overline = over
+compositing-underline = over
+compositing-border = over
 
 [global/wm]
 margin-top = 0

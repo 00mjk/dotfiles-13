@@ -21,8 +21,18 @@ alias sudo="sudo "
 alias vim="vim -u /home/jon/.vimrc"
 alias ytdl="youtube-dl"  
 
+### Ruby Gems ###
+export GEM_HOME=$(ruby -e 'print Gem.user_dir')
+
+### rbenv ###
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
 ### nvm (Node Version Manager) setup ###
 source /usr/share/nvm/init-nvm.sh
+
+## For stack (Haskell) ##
+export PATH="$HOME/.local/bin:$PATH"
 
 ### JupyterLab ###
 ### Allow third-party extensions for JupyterLab ###
@@ -38,3 +48,6 @@ fi
 
 # zsh syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Source .zshenv
+source $HOME/.zshenv
