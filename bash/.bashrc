@@ -11,6 +11,10 @@ PS1='[\u@\h \W]\$ '
 ### Ruby Gems Bundler ###
 export GEM_HOME=$(ruby -e 'print Gem.user_dir')
 
+### rbenv ###
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
 ### Android ###
 export ANDROID_HOME=/opt/android-sdk
 export PATH=$PATH:$ANDROID_HOME/tools
