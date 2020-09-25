@@ -12,8 +12,8 @@
 set $mod Mod4
 
 # Set monitors
-set $monitor_one HDMI-0
-set $monitor_two DVI-I-1
+set $monitor_one DP-0
+set $monitor_two HDMI-0
 
 # Set wallpaper(s)
 set $wallpaper_one "/jonfiles/Pictures/Backgrounds/purple_space.jpg" 

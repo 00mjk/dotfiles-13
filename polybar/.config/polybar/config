@@ -37,7 +37,7 @@ shade8 = #B0BEC5
 shade9 = #2C2C2C
 
 [bar/left]
-monitor = ${env:MONITOR:HDMI-0}
+monitor = ${env:MONITOR:DP-0}
 width = 100%
 height = 32
 offset-x = 0
@@ -84,7 +84,7 @@ wm-restack = bspwm
 enable-ipc = true
 
 [bar/right]
-monitor = ${env:MONITOR:DVI-I-1}
+monitor = ${env:MONITOR:HDMI-0}
 width = 100%
 height = 32
 offset-x = 0
