@@ -82,6 +82,9 @@ source /usr/share/nvm/init-nvm.sh
 export PATH="$HOME/.local/bin:$PATH"
 # End stack
 
+# For Doom Emacs
+export PATH="$HOME/.emacs.d/bin:$PATH"
+
 # JupyterLab 
 ### Allow third-party extensions for JupyterLab ###
 export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
