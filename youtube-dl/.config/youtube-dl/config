@@ -6,6 +6,11 @@
 ### Always extract audio 
 #-x
 
+# Continue
+### force resume of partially downloaded files
+# -c
+--continue
+
 # Ignore Errors
 --ignore-errors
 
