@@ -75,7 +75,7 @@ font-2 = "Siji:style=Regular:pixelsize=12;2"
 
 modules-left = i3 
 modules-center = xwindow
-modules-right = xkeyboard date volume 
+modules-right = xkeyboard date 
 
 tray-position = none
 tray-padding = 0
