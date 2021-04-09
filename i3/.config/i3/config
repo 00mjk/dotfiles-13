@@ -256,5 +256,8 @@ exec_always --no-startup-id picom --config ~/.config/picom.conf -b
 #exec --no-startup-id feh --bg-scale /jonfiles/Pictures/Backgrounds/purple_space.jpg --bg-scale /jonfiles/Pictures/Backgrounds/wallhaven-abstract-27.jpg
 exec_always --no-startup-id feh --bg-scale $wallpaper_one --bg-scale $wallpaper_two 
 
+# fcitx5
+exec_always --no-startup-id fcitx5 -d
+
 # polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch-i3.sh
