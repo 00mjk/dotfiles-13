@@ -23,7 +23,7 @@
 ;(package! some-package)
 
 ; Install themes:
-(package! srcery-theme)
+(package! gruvbox-theme)
 
 ; JavaScript stuff
 (package! prettier-js)
