@@ -65,6 +65,10 @@ for f in $HOME/.config/shellconfig/*; do source "$f"; done
 # Add color to ls
 alias ls="ls --color=always"
 
+# zinit aliases
+alias zitsu="zinit self-update"
+alias zitua="zinit update --all"
+
 # Ruby
 ### Ruby Gems ### 
 export GEM_HOME=$(ruby -e 'print Gem.user_dir')
