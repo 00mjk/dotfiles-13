@@ -1,0 +1,474 @@
+;=====================================================
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;=====================================================
+
+[settings]
+screenchange-reload = true
+compositing-background = over
+compositing-foreground = over
+compositing-overline = over
+compositing-underline = over
+compositing-border = over
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+[colors]
+background = #282828
+background-alt = #1d2021
+foreground = #fbf1c7
+foreground-alt = #f9f5d7
+
+red = #cc241d
+green = #98971a
+yellow = #d79921
+blue = #458588
+purple = #b1f286
+aqua = #689d6a 
+orange = #d65d0e
+
+icon = ${self.foreground-alt}
+alert = ${self.yellow}
+
+tag-focused-background = #7c6f64
+tag-unfocused-background = #98971a
+tag-visible-background = #3c3836
+tag-urgent-background = #cc241d
+
+#spotify = #fff
+
+[bar/main]
+override-redirect = false
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #FF5555
+border-size = 3
+border-color = ${colors.background}
+
+font-0 = "Fira Sans:size=14"
+font-1 = "FontAwesome:size=14"
+font-2 = "Siji:style=Regular:pixelsize=12;2"
+
+enable-ipc = true
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+bottom = false
+
+[bar/left]
+inherit = bar/main
+
+monitor = ${env:MONITOR:DP-0}
+width = 100%
+height = 32
+offset-x = 0
+offset-y = 0
+radius = 0.0
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 2 
+module-margin-right = 2
+
+modules-left = dwm
+#modules-center = xwindow
+#modules-right = xkeyboard date 
+
+tray-position = right
+tray-padding = 2
+
+[bar/right]
+inherit = bar/main
+
+monitor = ${env:MONITOR:HDMI-0}
+width = 100%
+height = 32
+offset-x = 0
+offset-y = 0
+radius = 0.0
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 2 
+module-margin-right = 2
+
+modules-left = dwm
+#modules-center = xwindow
+#modules-right = xkeyboard date 
+
+tray-position = right
+tray-padding = 2
+
+[module/ranger]
+type = custom/text
+content = %{F#666}1%{F-} 
+content-underline = ${xrdb:color1}
+click-left = bartermapp ranger 1 
+
+[module/calcurse]
+type = custom/text
+content = %{F#666}2%{F-} 
+content-underline = ${xrdb:color2}
+click-left = bartermapp task 2 
+
+[module/task]
+type = custom/text
+content = %{F#666}3%{F-} 
+content-underline = ${xrdb:color3}
+click-left = bartermapp task 3 
+
+[module/ncmpcpp]
+type = custom/text
+content = %{F#666}4%{F-} 
+content-underline = ${xrdb:color4}
+click-left = bartermapp ncmpcpp 4 
+
+[module/htop]
+type = custom/text
+content = %{F#666}5%{F-} 
+content-underline = ${xrdb:color5}
+click-left = bartermapp htop 5
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+;format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-underline = ${colors.secondary}
+
+label-layout = %layout%
+;label-layout-underline = ${colors.secondary}
+label-layout-underline = ${colors.uw-metallic-gold}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+[module/dwm]
+type = internal/dwm
+format = <label-tags> <label-layout> <label-floating> <label-title>
+;socket-path = /tmp/dwm.sock
+
+enable-tags-click = true
+enable-tags-scroll = true
+tags-scroll-empty = false
+tags-scroll-reverse = false
+tags-scroll-wrap = true
+enable-layout-click = true
+enable-layout-scroll = true
+layout-scroll-wrap = true
+layout-scroll-reverse = true
+
+; If enable-layout-click = true, clicking the layout symbol will switch to this layout
+secondary-layout-symbol = [M]
+
+; Tagas:
+; Available tokens:
+;   %name%
+
+label-floating = F
+
+label-title = %title%
+label-title-maxlen = 35
+label-title-padding = 1
+label-title-foreground = ${colors.foreground}
+label-title-background = ${colors.background}
+
+label-layout = %symbol%
+label-layout-padding = 1
+label-layout-foreground = ${colors.foreground}
+label-layout-background = ${colors.background}
+
+; focused = Active tag on focused monitor
+label-focused = %name%
+label-focused-background = ${colors.tag-focused-background}
+label-focused-foreground = ${colors.foreground}
+label-focused-padding = 2
+label-focused-font = 7
+
+; unfocused = Inactive tag on any monitor
+label-unfocused = %name%
+label-unfocused-background = ${colors.tag-unfocused-background}
+label-unfocused-foreground = ${colors.foreground}
+label-unfocused-padding = 2
+label-unfocused-font = 7
+
+; visible = Active tag on unfocused monitor
+label-visible = %name%
+label-visible-background = ${colors.tag-visible-background}
+label-visible-foreground = ${colors.foreground}
+label-visible-padding = 2
+label-visible-font = 7
+
+; urgent = Tag with urgency hint set
+label-urgent = %name%
+label-urgent-background = ${colors.tag-urgent-background}
+label-urgent-padding = 2
+label-urgent-font = 7
+
+; empty = Tags with no windows assigned
+; This can be set to an empty string to hide empty tags
+label-empty =
+
+; Separator in between workspaces
+; label-separator = |
+
+[module/title]
+type = internal/xwindow
+
+[module/mpd]
+type = internal/mpd
+format-online = <icon-prev> <toggle> <icon-next> <label-song>
+
+icon-prev = 
+icon-stop =  
+icon-play = 
+icon-pause = 
+icon-next = 
+
+label-song-maxlen = 25
+label-song-ellipsis = true
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = BL
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #ff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground-alt}
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+;format-prefix = " "
+format-prefix = "%{T2} %{T-}"
+format-prefix-foreground = ${colors.foreground-alt}
+;format-underline = #f90000
+format-underline = ${colors.yellow}
+label = CPU: %percentage:2%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "%{T2} %{T-} "
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = ${colors.blue}
+label = RAM: %gb_used%
+
+[module/wlan]
+type = internal/network
+interface = wlp4s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-underline = ${colors.purple}
+;label-connected = %essid%
+label-connected = %essid%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+;ramp-signal-0 = 
+;ramp-signal-1 = 
+;ramp-signal-2 = 
+;ramp-signal-3 = 
+;ramp-signal-4 = 
+ramp-signal-foreground = ${colors.foreground-alt}
+
+[module/eth]
+type = internal/network
+interface = enp3s0
+interval = 3.0
+ping-interval = 3.0
+
+label-connected = ETH:  %downspeed% |  %upspeed% | %local_ip%
+label-connected-foreground = ${colors.foreground}
+
+label-packetloss = ETH:  %downspeed% |  %upspeed% | %local_ip%
+label-packetloss-foreground = ${colors.foreground}
+
+label-disconnected = <disconnected>
+
+format-connected = <label-connected>
+format-connected-underline = ${colors.purple}
+format-connected-prefix = c
+;format-connected-prefix-font = 6
+format-connected-prefix-padding-right = 1
+format-connected-prefix-foreground = ${colors.foreground-alt}
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = %a %Y-%m-%d
+date-alt = %a %Y-%m-%d
+
+time = | %H:%M
+time-alt = | %H:%M:%S
+
+format-prefix = 
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = ${colors.aqua}
+
+label = %date% %time%
+
+[module/volume]
+type = internal/alsa
+
+format-volume = <label-volume> <bar-volume> 
+
+label-volume = 
+label-volume-foreground = ${root.foreground}
+label-volume-font = 3
+
+ramp-volume-0=.
+ramp-volume-1=.
+ramp-volume-2=.
+
+;format-muted-prefix = "🔇"
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = sound muted
+
+bar-volume-width = 10 
+bar-volume-foreground-0 = #ff5555 
+bar-volume-foreground-1 = #ff5555 
+bar-volume-foreground-2 = #f5a70a 
+bar-volume-foreground-3 = #f5a70a
+bar-volume-foreground-4 = #f5a70a 
+bar-volume-foreground-5 = #55aa55
+bar-volume-foreground-6 = #55aa55
+
+bar-volume-gradient = false
+bar-volume-indicator = | 
+bar-volume-indicator-font = 2 
+bar-volume-fill = ━
+bar-volume-fill-font = 2
+bar-volume-empty = ━
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = #ffb52a
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+;format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-underline = ${self.format-charging-underline}
+
+;ramp-capacity-0 = 
+;ramp-capacity-1 = 
+;ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+;animation-charging-0 = 
+;animation-charging-1 = 
+;animation-charging-2 = 
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp> <label>
+format-underline = #f50a4d
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+label = %temperature%
+label-warn = %temperature%
+label-warn-foreground = ${colors.secondary}
+
+;ramp-0 = 
+;ramp-1 = 
+;ramp-2 = 
+ramp-foreground = ${colors.foreground-alt}
+
+[module/powermenu]
+type = custom/menu
+
+format-spacing = 0
+
+label-open =  
+label-open-foreground = #DD0000
+label-close = cancel
+label-close-foreground = #DD0000
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+; vim:ft=dosini
